@@ -38,7 +38,20 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    let code = expr.split('**********')
+    let result = []
+    let letter
+    let letter2
+    for (let i = 0; i < code.length; i++) {
+
+        for (let j = 0; j < code[i].length/10; j++) {
+            letter = code[i].substr(j*10,10).replace(/00+/,'').replace(/11/,'-').replace(/11/,'-').replace(/11/,'-').replace(/11/,'-').replace(/11/,'-').replace(/10/,'.').replace(/10/,'.').replace(/10/,'.').replace(/10/,'.').replace(/10/,'.').replace(/10/,'.')
+            letter2 = MORSE_TABLE[letter]
+            result.push(letter2)
+        }
+result.push(' ')
+    }
+   return result.join('').trim()
 }
 
 module.exports = {
